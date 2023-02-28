@@ -8,6 +8,9 @@ import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 
+// wiring the controllers
+import { itemsRouter } from "./items/items.router";
+
 dotenv.config();
 
 /**
@@ -29,6 +32,8 @@ app.use(helmet());
 app.use(cors());
 app.use(express.json());
 
+// leverages the router
+app.use("/api/menu/items", itemsRouter);
 
 /**
  * Server Activation
