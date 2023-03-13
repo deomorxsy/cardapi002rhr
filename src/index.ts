@@ -5,8 +5,8 @@
 
 import * as dotenv from "dotenv";
 import express from "express";
-import cors from "cors";
-import helmet from "helmet";
+//import cors from "cors";
+//import helmet from "helmet";
 
 // wiring the controllers
 import { itemsRouter } from "./items/items.router";
@@ -28,8 +28,8 @@ const app = express();
  *  App Configuration
  */
 
-app.use(helmet());
-app.use(cors());
+//app.use(helmet());
+//app.use(cors());
 app.use(express.json());
 
 // leverages the router
