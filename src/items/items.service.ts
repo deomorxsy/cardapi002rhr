@@ -16,21 +16,21 @@ let items: Items = {
         name: "Burger",
         price: 599,
         description: "Tasty",
-        image: "https://cdn.auth0.com/blog/whatabyte/burger-sm.png"
+        image: "https://i.imgur.com/WVszpXZ.png"
     },
 	2: {
 		id: 2,
 		name: "Pizza",
 		price: 299,
 		description: "Cheesy",
-		image: "https://cdn.auth0.com/blog/whatabyte/pizza-sm.png"
+		image: "https://i.imgur.com/B6fQ15Z.png"
     },
   	3: {
 		id: 3,
 		name: "Tea",
 		price: 199,
 		description: "Informative",
-		image: "https://cdn.auth0.com/blog/whatabyte/tea-sm.png"
+		image: "https://i.imgur.com/Rm2fFqi.jpeg"
     }
 };
 
