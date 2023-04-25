@@ -26,7 +26,11 @@ itemsRouter.get("/", async (req: Request, res: Response) => {
         const items: Item[] = await ItemService.findAll();
         res.status(200).send(items);
     } catch (e) {
+        if (e instanceof Error) {
         res.status(500).send(e.message);
+        } else {
+            console.log('unexpected error D', e);
+        }
     }
 });
 // GET items/:id
@@ -42,11 +46,14 @@ itemsRouter.get("/:id", async (req: Request, res: Response) => {
 
         res.status(404).send("item not found");
 
-    }catch (e) {//;
+    }catch (e) {
+        if (e instanceof Error) {
         res.status(500).send(e.message);
-    }
-
-});
+        } else {
+            console.log('unexpected error D', e);
+        }
+     }
+}
 
 // POST items
 itemsRouter.post("/", async (req: Request, res: Response) => {
@@ -56,9 +63,13 @@ itemsRouter.post("/", async (req: Request, res: Response) => {
 
         res.status(201).json(newItem);
     } catch (e) {
+        if (e instanceof Error) {
         res.status(500).send(e.message);
+    } else {
+        console.log('unexpected error D', e)
     }
-});
+    }
+}));
 
 
 // PUT items/:id
