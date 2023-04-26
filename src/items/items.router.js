@@ -43,11 +43,16 @@ const express_1 = __importDefault(require("express"));
 const ItemService = __importStar(require("./items.service"));
 /**
  * Router Definition
- */
+
+ itemsRouter below is a mini-app:
+ a middleware and routing system below
+*/
 exports.itemsRouter = express_1.default.Router();
 /**
  * Controller Definitions
  */
+//REDO get items
+////itemsRouter
 // GET items
 exports.itemsRouter.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -62,6 +67,13 @@ exports.itemsRouter.get("/", (req, res) => __awaiter(void 0, void 0, void 0, fun
             console.log('unexpected error D', e);
         }
     }
+    /*try {
+     const items: Item[] = await ItemService.findAll();
+ 
+     res.status(200).send(items);
+   } catch (e) {
+     res.status(500).send(e.message);
+   }*/ 
 }));
 // GET items/:id
 exports.itemsRouter.get("/:id", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -81,9 +93,7 @@ exports.itemsRouter.get("/:id", (req, res) => __awaiter(void 0, void 0, void 0, 
             console.log('unexpected error D', e);
         }
     }
-})
-// POST items
-, 
+}));
 // POST items
 exports.itemsRouter.post("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -99,7 +109,7 @@ exports.itemsRouter.post("/", (req, res) => __awaiter(void 0, void 0, void 0, fu
             console.log('unexpected error D', e);
         }
     }
-})));
+}));
 // PUT items/:id
 exports.itemsRouter.put("/:id", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const id = parseInt(req.params.id, 10);
@@ -114,7 +124,12 @@ exports.itemsRouter.put("/:id", (req, res) => __awaiter(void 0, void 0, void 0, 
         res.status(201).json(newItem);
     }
     catch (e) {
-        res.status(500).send(e.message);
+        if (e instanceof Error) {
+            res.status(500).send(e.message);
+        }
+        else {
+            console.log('unexpected error D', e);
+        }
     }
 }));
 // DELETE items/:id
@@ -125,6 +140,11 @@ exports.itemsRouter.delete("/:id", (req, res) => __awaiter(void 0, void 0, void 
         res.sendStatus(204);
     }
     catch (e) {
-        res.status(500).send(e.message);
+        if (e instanceof Error) {
+            res.status(500).send(e.message);
+        }
+        else {
+            console.log('unexpected error D', e);
+        }
     }
 }));

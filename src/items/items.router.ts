@@ -11,7 +11,10 @@ import { BaseItem, Item } from "./item.interface"
 
 /**
  * Router Definition
- */
+
+ itemsRouter below is a mini-app:
+ a middleware and routing system below
+*/
 
 export const itemsRouter = express.Router();
 
@@ -19,9 +22,13 @@ export const itemsRouter = express.Router();
  * Controller Definitions
  */
 
+//REDO get items
+
+////itemsRouter
+
 // GET items
 
-itemsRouter.get("/", async (req: Request, res: Response) => {
+itemsRouter.get("/", async  (req: Request, res: Response) => {
     try {
         const items: Item[] = await ItemService.findAll();
         res.status(200).send(items);
@@ -32,7 +39,14 @@ itemsRouter.get("/", async (req: Request, res: Response) => {
             console.log('unexpected error D', e);
         }
     }
-});
+
+   /*try {
+    const items: Item[] = await ItemService.findAll();
+
+    res.status(200).send(items);
+  } catch (e) {
+    res.status(500).send(e.message);
+  }*/});
 // GET items/:id
 
 itemsRouter.get("/:id", async (req: Request, res: Response) => {
@@ -53,7 +67,7 @@ itemsRouter.get("/:id", async (req: Request, res: Response) => {
             console.log('unexpected error D', e);
         }
      }
-}
+});
 
 // POST items
 itemsRouter.post("/", async (req: Request, res: Response) => {
@@ -69,7 +83,7 @@ itemsRouter.post("/", async (req: Request, res: Response) => {
         console.log('unexpected error D', e)
     }
     }
-}));
+});
 
 
 // PUT items/:id
@@ -88,9 +102,12 @@ itemsRouter.put("/:id", async (req: Request, res: Response) => {
         const newItem = await ItemService.create(itemUpdate);
 
         res.status(201).json(newItem);
-    } catch (e) {
+    }  catch (e) {
+        if (e instanceof Error) {
         res.status(500).send(e.message);
-    }
+        } else {
+            console.log('unexpected error D', e);
+            }}
 });
 
 
@@ -103,6 +120,10 @@ itemsRouter.delete("/:id", async (req: Request, res: Response) => {
 
         res.sendStatus(204);
     } catch (e) {
+        if (e instanceof Error) {
         res.status(500).send(e.message);
-    }
-});
+        } else {
+            console.log('unexpected error D', e);
+        }
+
+    }});
