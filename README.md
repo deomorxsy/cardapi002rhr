@@ -1,6 +1,20 @@
 ## CARDAPI002
 
+### 0. Setup
+
+Clone project
+
+```
+git clone git@github.com:deomorxsy/cardapi002.git
+```
+
+change to server directory
+```
+cd ./cardapi002/server/
+```
+
 ### 1. Node
+
 Install the following packages and type definitions:
 
 ```
@@ -33,10 +47,22 @@ podman build -t your-app-name -f ./{Dockerfile.framework-you-want}
 buildah bud -t your-app-name -f ./{Dockerfile.framework-you-want}
 ```
 
-Run:
+Run process and expose the port:
 ```
-# run process and expose the port
 docker run --rm -p 3000:3000 your-app-name
+# or
+podman run --rm -p 3000:3000 your-app-name
+```
 
-podman run --rm -p 300:300 your-app-name
+PS: with podman, use [podman-stop](https://docs.podman.io/en/latest/markdown/podman-stop.1.html) to fully stop the process instead of just sending SIGINT with ctrl+c. In this case, just get the PID with [podman-ps](https://docs.podman.io/en/latest/markdown/podman-ps.1.html) and pass it as argument.
+
+
+you can test POST and other http verbs/methods using [curl](https://github.com/curl/curl). Replace the port accordingly.
+```
+curl -X POST -H 'Content-Type: application/json' -d '{
+  "name": "Salad",
+  "price": 499,
+  "description": "Fresh",
+  "image": "your-image-uri-link"
+}' http://localhost:3000/api/menu/items -i
 ```
