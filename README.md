@@ -1,6 +1,6 @@
 ## CARDAPI002
 
-### 0. Setup
+### Node
 
 Clone project
 
@@ -12,8 +12,6 @@ change to server directory
 ```
 cd ./cardapi002/server/
 ```
-
-### 1. Node
 
 Install the following packages and type definitions:
 
@@ -31,7 +29,7 @@ npm run dev
 PS: remember it reads the PORT from the .env dotfile, so if it seems stuck, check [that file](https://github.com/deomorxsy/cardapi002/blob/deo/wip01/cicd/.env)
 
 
-### 2. OCI Container
+### OCI Container
 > still with node but containerized
 
 Build container image from local Containerfile. Add a tag with the 't' flag.
