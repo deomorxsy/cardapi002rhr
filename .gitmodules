@@ -1,0 +1,3 @@
+[submodule "vue/durcrhr"]
+	path = client/vue/durcrhr
+	url = https://github.com/deomorxsy/durcrhr

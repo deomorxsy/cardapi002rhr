@@ -1,6 +1,6 @@
 ## CARDAPI002
 
-## 1. Localhost, with node
+### 1. Node
 Install the following packages and type definitions:
 
 ```
@@ -14,7 +14,11 @@ run with:
 npm run dev
 ```
 
-## Container
+PS: remember it reads the PORT from the .env dotfile, so if it seems stuck, check [that file](https://github.com/deomorxsy/cardapi002/blob/deo/wip01/cicd/.env)
+
+
+### 2. OCI Container
+> still with node but containerized
 
 Build container image from local Containerfile. Add a tag with the 't' flag.
 
