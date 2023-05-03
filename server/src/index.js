@@ -56,5 +56,5 @@ app.use("/api/menu/items", items_router_1.itemsRouter);
  * Server Activation
  */
 app.listen(PORT, () => {
-    console.log('Listening on port ${PORT}');
+    console.log(`\n====================================\n\nContainer port: ${PORT}\n|> not sure which port is mapped on host?\n|> check podman-port command.\n\n|> check at http://localhost:${PORT}/api/menu/items/\n\n====================================`);
 });
