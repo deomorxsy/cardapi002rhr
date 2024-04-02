@@ -42,10 +42,16 @@ app.post('/api/menu/items', (req, res) => {
     const data = req.body;
     console.log(data);
     // process the data
-    res.send('OK');
+    res.send('POST OK');
 })
 
-console.log(data);
+app.get('/api/menu/items', (req, res) => {
+    const data = req.query;
+    console.log(data);
+    // process the data
+    res.send('GET OK');
+})
+//console.log(data);
 
 /** Server Activation **/
 
